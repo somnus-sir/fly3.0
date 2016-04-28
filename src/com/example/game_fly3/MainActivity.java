@@ -43,14 +43,14 @@ import android.widget.Toast;
 	public Boolean sumkey100;// 当sum到达100
 	public Boolean dieBoolean;//  
 	public Boolean espattachkey=true;
-	Boolean lopkey=false ;
+	public Boolean lopkey=false ;
 	public int sum_attach = 0;
 	public static final int TEXT_A = 1;
 	public static final int TEXT_TIME = 2;
 	private static final int APP_EXIT = 0;	
 	private int attach_fly=100;//子弹偏移距离	
-	public int boomsum;//炸弹数量-----在startActivity中指定初始化
-	public int HP;      //初始化要在Activity_FirstStart  和  死亡重新开始游戏都设置
+	private int boomsum;//炸弹数量-----在startActivity中指定初始化
+	private int HP;      //初始化要在Activity_FirstStart  和  死亡重新开始游戏都设置
 	private int attachmove = 8;//子弹速度
 	private int move= 1; //敌机移动速度
 	private int sum ;//杀敌数
@@ -126,7 +126,7 @@ import android.widget.Toast;
 		sumkey100 = prefs.getBoolean("sumkey100", false);
 		dieBoolean = prefs.getBoolean("dieBoolean", true);
 		boomsum = prefs.getInt("boomsum", 7);
-		sumtrans = prefs.getInt("trans", 10);
+		sumtrans = prefs.getInt("sumtrans", 10);
 		
 			
 		
@@ -655,12 +655,12 @@ import android.widget.Toast;
 	
 	
 //----关闭保存数据-----
-	@SuppressLint("CommitPrefEdits") public void onStop(){
-		super.onStop();
+	@SuppressLint("CommitPrefEdits") public void onDestroy(){
+		super.onDestroy();
 		SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
 		editor.putInt("sum", sum);
 		editor.putInt("boomsum", boomsum);
-		editor.putInt("trans", sumtrans);
+		editor.putInt("sumtrans", sumtrans);
 		editor.commit();			
 	}
 	
@@ -668,14 +668,9 @@ import android.widget.Toast;
 //----返回存储数据----
 	  public boolean onKeyDown(int keyCode, KeyEvent event) {  
 	        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {  
-	            //showDialog(APP_EXIT);  
-	    		SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
-	    		editor.putInt("sum", sum);
-	    		editor.putInt("boomsum", boomsum);
-	    		editor.putBoolean("sumkey100", sumkey100);
-	    		editor.commit();
-	    		Intent intent = new Intent(MainActivity.this,Activity_FirstStart.class);
-	    		startActivity(intent);
+	            //showDialog(APP_EXIT);  	    		
+	    		onDestroy();
+	    		finish();
 	    		return true;
 	        } else  
 	            return super.onKeyDown(keyCode, event);  
@@ -834,16 +829,14 @@ import android.widget.Toast;
 			dialog.setPositiveButton("是", new DialogInterface.OnClickListener() {
 				
 				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
-					editor.putInt("sum", 0);
-					editor.putInt("boomsum", 5);
-					editor.putBoolean("sumkey100", true);
-					editor.putBoolean("dieBoolean", true);
-					editor.putInt("trans", 0);
-					editor.commit();	
-					Intent intent_start = new Intent(MainActivity.this,Activity_change.class);
-					startActivity(intent_start);						
+				public void onClick(DialogInterface dialog, int which) {	
+					sum = 0;
+					boomsum = 5;
+					sumkey100 = true;
+					dieBoolean = true;
+					sumtrans = 0;
+					Intent intent = new Intent(MainActivity.this,MainActivity.class);
+					startActivity(intent);
 				}
 			});
 			//

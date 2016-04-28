@@ -22,7 +22,6 @@ public class Activity_FirstStart extends Activity implements OnClickListener{
 	private Button startButton;
 	private Button goonButton;
 	private LinearLayout linearLayout;
-	private int boomsum=5;//炸弹数量-----在startActivity中指定初始化
 	Boolean sumkey100 = true;// 当sum到达100
 	public Boolean dieBoolean;
 	
@@ -77,13 +76,13 @@ public class Activity_FirstStart extends Activity implements OnClickListener{
 			public void onClick(DialogInterface dialog, int which) {
 				SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
 				editor.putInt("sum", 0);
-				editor.putInt("boomsum", boomsum);
+				editor.putInt("boomsum", 5);
 				editor.putBoolean("sumkey100", true);
 				editor.putInt("HP", 1);
 				editor.putBoolean("dieBoolean", true);
-				editor.putInt("trans", 0);
+				editor.putInt("sumtrans", 0);
 				editor.commit();	
-				Intent intent_start = new Intent(Activity_FirstStart.this,Activity_change.class);
+				Intent intent_start = new Intent(Activity_FirstStart.this,MainActivity.class);
 				startActivity(intent_start);						
 			}
 		});

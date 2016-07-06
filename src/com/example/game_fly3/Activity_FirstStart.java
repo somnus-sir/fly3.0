@@ -22,7 +22,7 @@ public class Activity_FirstStart extends Activity implements OnClickListener{
 	private Button startButton;
 	private Button goonButton;
 	private LinearLayout linearLayout;
-	private Boolean sumkey100 = true;// µ±sumµ½´ï100
+	private Boolean sumkey100 = true;// ï¿½ï¿½sumï¿½ï¿½ï¿½ï¿½100
 	public Boolean dieBoolean;
 	
 
@@ -36,9 +36,9 @@ public class Activity_FirstStart extends Activity implements OnClickListener{
 		linearLayout.setAnimation(alphaAnimation);
 		startButton = (Button) findViewById(R.id.startgame);
 		
-		startButton.getBackground().setAlpha(255);//0~255Í¸Ã÷¶ÈÖµ
+		startButton.getBackground().setAlpha(255);//0~255Í¸ï¿½ï¿½ï¿½ï¿½Öµ
 		goonButton = (Button) findViewById(R.id.goongame);
-		goonButton.getBackground().setAlpha(255);//0~255Í¸Ã÷¶ÈÖµ
+		goonButton.getBackground().setAlpha(255);//0~255Í¸ï¿½ï¿½ï¿½ï¿½Öµ
 		
 		
 		startButton.setOnClickListener(this);
@@ -67,10 +67,10 @@ public class Activity_FirstStart extends Activity implements OnClickListener{
 	
 	public void My_dialog(){
 		AlertDialog.Builder dialog = new AlertDialog.Builder(Activity_FirstStart.this);
-		dialog.setTitle("¿ªÊ¼ÓÎÏ·");
-		dialog.setMessage("ÖØĞÂ¿ªÊ¼ÓÎÏ·");
+		dialog.setTitle("å¼€å§‹æ¸¸æˆ");
+		dialog.setMessage("é‡æ–°å¼€å§‹æ¸¸æˆ");
 		dialog.setCancelable(false);
-		dialog.setPositiveButton("È·¶¨", new DialogInterface.OnClickListener() {
+		dialog.setPositiveButton("ç¡®å®š", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -87,12 +87,12 @@ public class Activity_FirstStart extends Activity implements OnClickListener{
 			}
 		});
 		//
-		dialog.setNegativeButton("È¡Ïû", new DialogInterface.OnClickListener() {
+		dialog.setNegativeButton("å–æ¶ˆ", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				// TODO Auto-generated method stub
-				Toast.makeText(Activity_FirstStart.this, "È¡Ïû", Toast.LENGTH_SHORT).show();
+				Toast.makeText(Activity_FirstStart.this, "å–æ¶ˆ", Toast.LENGTH_SHORT).show();
 			}
 		});
 		dialog.show();

@@ -48,7 +48,7 @@ import android.widget.Toast;
 	public static final int TEXT_A = 1;
 	public static final int TEXT_TIME = 2;
 	private static final int APP_EXIT = 0;	
-	private int attach_fly=100;//子弹偏移距离	
+	private int attach_fly=100;//子弹 偏移距离	
 	private int boomsum;//炸弹数量-----在startActivity中指定初始化
 	private int HP;      //初始化要在Activity_FirstStart  和  死亡重新开始游戏都设置
 	private int attachmove = 8;//子弹速度
@@ -722,23 +722,6 @@ import android.widget.Toast;
 
 	  }
 	  
-//-----------玩家转换为保护状态动画--------	  
-	  public void change_protected(){
-			
-			playerImageView.setBackgroundResource(R.drawable.myfly5);		
-			AnimatorSet setshow = new AnimatorSet();
-			ObjectAnimator show1 = ObjectAnimator.ofFloat(playerImageView, "scaleY", 0.7f,1.0f);
-			show1.setDuration(2000);
-			ObjectAnimator show2 = ObjectAnimator.ofFloat(playerImageView, "scaleX", 0.7f,1.0f);
-			show2.setDuration(2000);
-			setshow.playTogether(show1,show2);
-			setshow.start();							
-	  }
-	  
-	  public void change_disprotected(){
-			playerImageView.setBackgroundResource(R.drawable.protected_play);
-	
-	  }
 
 //---------背景音乐--------
 	  protected void onPause() {  	      
